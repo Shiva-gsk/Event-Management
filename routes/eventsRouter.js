@@ -8,10 +8,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 const Event = require("../models/eventSchema")
 const Registrations = require("../models/registrationSchema")
 
-router.get("/", (req, res)=>{
-    console.log("/");
-})
-
+//POST events/create
 router.post("/create", async (req, res) => {
     try{
         const {title, description, date,time, venue, capacity,organizer, tags} = req.body
@@ -24,6 +21,7 @@ router.post("/create", async (req, res) => {
     }
 });
 
+//POST /events/register/:eventId
 router.post("/register/:eventId", async (req, res) => {
     try{
         const {studentId, name, email, department, year} = req.body;
@@ -47,7 +45,7 @@ router.post("/register/:eventId", async (req, res) => {
     }
 });
 
-
+//PUT /events/:eventId
 router.put("/update/:eventId", async (req, res) => {
     try{
         const eventId = req.params.eventId;
@@ -64,6 +62,7 @@ router.put("/update/:eventId", async (req, res) => {
     }
 });
 
+//DELETE /events/:eventId
 router.delete("/:eventId", async (req, res) => {
     try{
         const eventId = req.params.eventId;
@@ -80,6 +79,8 @@ router.delete("/:eventId", async (req, res) => {
     }
 });
 
+
+//GET /events/all
 router.get("/all", async (req, res) => {
     try{
         const events = await Event.find().lean()
@@ -91,6 +92,7 @@ router.get("/all", async (req, res) => {
     }
 });
 
+//GET /events/:eventId
 router.get("/:eventId", async (req, res) => {
     try{
         const eventId = req.params.eventId;
