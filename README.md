@@ -1,6 +1,6 @@
 Live at :- https://event-management-to01.onrender.com
 
-Api Endpoints:-
+# Api Endpoints:-
 
 1. POST /events/create
    - Creates event by passing all details in request body and returns eventId
